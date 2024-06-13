@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block titular %}
+Videojuegos
+{% endblock titular %}
+
+{% block titulo_2 %}
+<h1>LISTADO DE VIDEOJUEGOS</h1>
+{% endblock titulo_2 %}
+{% block main %}
+    
+    <ol>
+        {% for videojuego in videojuegos %}
+        <li> {{videojuego}} </li>
+        {% endfor %}
+    </ol>
+    
+
+{% endblock main %}
