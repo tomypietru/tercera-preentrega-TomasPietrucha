@@ -8,7 +8,7 @@ from coderapp.forms import CrearVideojuegoFormulario
 def inicio(request):
     return render(request,"coderapp/index.html")
 
-    #,nombre,genero 
+    
 def crear(request):
     formulario = CrearVideojuegoFormulario()
     if request.method == "POST":
@@ -20,15 +20,16 @@ def crear(request):
             return redirect("videojuegos")
     return render(request, "coderapp/videojuego_templates/crear_videojuego.html", {"formulario": formulario})
 
-#,{"videojuego": videojuego}
-# videojuego= VideoJuego(nombre=nombre, genero=genero)
-# videojuego.save()
+
 
 def videojuegos(request):
     videojuego = VideoJuego.objects.all()
     return render(request, "coderapp/videojuego_templates/lista_videojuegos.html", {"videojuegos": videojuego})
     
-    
+def eliminar_videojuego(request,id):
+    videojuego = VideoJuego.objects.get(id=id)
+    videojuego.delete()
+    return redirect('videojuegos')     
     
 
 def contacto(request):
